@@ -1,0 +1,53 @@
+* {
+    background-color: #000000; color: #ffefd5; font-family: 'Courier New', Courier, monospace;
+}
+
+
+h1 {
+    color: rgb(238, 238, 167);
+    font-size: 4rem;
+    text-align: center;
+}
+a {
+    color: #ffefd5;
+}
+a:hover {
+    color: greenyellow; color: #ffc0cb
+}
+a:focus {
+    color: pink;
+}
+
+div.displays  {
+    text-align: center;
+    font-size: 2rem;
+}
+div.gameButtons {
+    text-align: center;
+    
+}
+div.gameButtons button {
+    font-size: 12rem;
+    border-radius: 50%;
+    cursor: pointer;
+    border-color: white;
+}
+#playerScore, #compScore {
+    text-align: center;
+    font-size: 1.5rem;
+    list-style-type: none;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+#reset {
+    background-color: red;
+    border: #ff0000;
+    font-weight: bold;
+    color: black;
+}
+.reset {
+    text-align: center;
+}

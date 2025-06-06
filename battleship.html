@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="author" content="Abby Gardner">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Battleship</title>
+    <script src="battleship.js" defer></script>
+    <link rel="stylesheet" href="battleship.css" type="text/css">
+</head>
+
+<body>
+    <h1>Battleship</h1>
+    <button id="start" onclick="resetGame()">Start</button>
+    <table>
+        <tr>
+            <th></th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+        </tr>
+        <tr>
+            <th>A</th>
+            <td><button id="A1" onclick="playGame('A1')"><abbr title="A1">🌊</abbr></button></td>
+            <td><button id="A2" onclick="playGame('A2')"><abbr title="A2">🌊</abbr></button></td>
+            <td><button id="A3" onclick="playGame('A3')"><abbr title="A3">🌊</abbr></button></td>
+            <td><button id="A4" onclick="playGame('A4')"><abbr title="A4">🌊</abbr></button></td>
+            <td><button id="A5" onclick="playGame('A5')"><abbr title="A5">🌊</abbr></button></td>
+            <td><button id="A6" onclick="playGame('A6')"><abbr title="A6">🌊</abbr></button></td>
+            <td><button id="A7" onclick="playGame('A7')"><abbr title="A7">🌊</abbr></button></td>
+            <td><button id="A8" onclick="playGame('A8')"><abbr title="A8">🌊</abbr></button></td>
+            <td><button id="A9" onclick="playGame('A9')"><abbr title="A9">🌊</abbr></button></td>
+            <td><button id="A10" onclick="playGame('A10')"><abbr title="A10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>B</th>
+            <td><button id="B1" onclick="playGame('B1')"><abbr title="B1">🌊</abbr></button></td>
+            <td><button id="B2" onclick="playGame('B2')"><abbr title="B2">🌊</abbr></button></td>
+            <td><button id="B3" onclick="playGame('B3')"><abbr title="B3">🌊</abbr></button></td>
+            <td><button id="B4" onclick="playGame('B4')"><abbr title="B4">🌊</abbr></button></td>
+            <td><button id="B5" onclick="playGame('B5')"><abbr title="B5">🌊</abbr></button></td>
+            <td><button id="B6" onclick="playGame('B6')"><abbr title="B6">🌊</abbr></button></td>
+            <td><button id="B7" onclick="playGame('B7')"><abbr title="B7">🌊</abbr></button></td>
+            <td><button id="B8" onclick="playGame('B8')"><abbr title="B8">🌊</abbr></button></td>
+            <td><button id="B9" onclick="playGame('B9')"><abbr title="B9">🌊</abbr></button></td>
+            <td><button id="B10" onclick="playGame('B10')"><abbr title="B10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>C</th>
+            <td><button id="C1" onclick="playGame('C1')"><abbr title="C1">🌊</abbr></button></td>
+            <td><button id="C2" onclick="playGame('C2')"><abbr title="C2">🌊</abbr></button></td>
+            <td><button id="C3" onclick="playGame('C3')"><abbr title="C3">🌊</abbr></button></td>
+            <td><button id="C4" onclick="playGame('C4')"><abbr title="C4">🌊</abbr></button></td>
+            <td><button id="C5" onclick="playGame('C5')"><abbr title="C5">🌊</abbr></button></td>
+            <td><button id="C6" onclick="playGame('C6')"><abbr title="C6">🌊</abbr></button></td>
+            <td><button id="C7" onclick="playGame('C7')"><abbr title="C7">🌊</abbr></button></td>
+            <td><button id="C8" onclick="playGame('C8')"><abbr title="C8">🌊</abbr></button></td>
+            <td><button id="C9" onclick="playGame('C9')"><abbr title="C9">🌊</abbr></button></td>
+            <td><button id="C10" onclick="playGame('C10')"><abbr title="C10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>D</th>
+            <td><button id="D1" onclick="playGame('D1')"><abbr title="D1">🌊</abbr></button></td>
+            <td><button id="D2" onclick="playGame('D2')"><abbr title="D2">🌊</abbr></button></td>
+            <td><button id="D3" onclick="playGame('D3')"><abbr title="D3">🌊</abbr></button></td>
+            <td><button id="D4" onclick="playGame('D4')"><abbr title="D4">🌊</abbr></button></td>
+            <td><button id="D5" onclick="playGame('D5')"><abbr title="D5">🌊</abbr></button></td>
+            <td><button id="D6" onclick="playGame('D6')"><abbr title="D6">🌊</abbr></button></td>
+            <td><button id="D7" onclick="playGame('D7')"><abbr title="D7">🌊</abbr></button></td>
+            <td><button id="D8" onclick="playGame('D8')"><abbr title="D8">🌊</abbr></button></td>
+            <td><button id="D9" onclick="playGame('D9')"><abbr title="D9">🌊</abbr></button></td>
+            <td><button id="D10" onclick="playGame('D10')"><abbr title="D10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>E</th>
+            <td><button id="E1" onclick="playGame('E1')"><abbr title="E1">🌊</abbr></button></td>
+            <td><button id="E2" onclick="playGame('E2')"><abbr title="E2">🌊</abbr></button></td>
+            <td><button id="E3" onclick="playGame('E3')"><abbr title="E3">🌊</abbr></button></td>
+            <td><button id="E4" onclick="playGame('E4')"><abbr title="E4">🌊</abbr></button></td>
+            <td><button id="E5" onclick="playGame('E5')"><abbr title="E5">🌊</abbr></button></td>
+            <td><button id="E6" onclick="playGame('E6')"><abbr title="E6">🌊</abbr></button></td>
+            <td><button id="E7" onclick="playGame('E7')"><abbr title="E7">🌊</abbr></button></td>
+            <td><button id="E8" onclick="playGame('E8')"><abbr title="E8">🌊</abbr></button></td>
+            <td><button id="E9" onclick="playGame('E9')"><abbr title="E9">🌊</abbr></button></td>
+            <td><button id="E10" onclick="playGame('E10')"><abbr title="E10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>F</th>
+            <td><button id="F1" onclick="playGame('F1')"><abbr title="F1">🌊</abbr></button></td>
+            <td><button id="F2" onclick="playGame('F2')"><abbr title="F2">🌊</abbr></button></td>
+            <td><button id="F3" onclick="playGame('F3')"><abbr title="F3">🌊</abbr></button></td>
+            <td><button id="F4" onclick="playGame('F4')"><abbr title="F4">🌊</abbr></button></td>
+            <td><button id="F5" onclick="playGame('F5')"><abbr title="F5">🌊</abbr></button></td>
+            <td><button id="F6" onclick="playGame('F6')"><abbr title="F6">🌊</abbr></button></td>
+            <td><button id="F7" onclick="playGame('F7')"><abbr title="F7">🌊</abbr></button></td>
+            <td><button id="F8" onclick="playGame('F8')"><abbr title="F8">🌊</abbr></button></td>
+            <td><button id="F9" onclick="playGame('F9')"><abbr title="F9">🌊</abbr></button></td>
+            <td><button id="F10" onclick="playGame('F10')"><abbr title="F10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>G</th>
+            <td><button id="G1" onclick="playGame('G1')"><abbr title="G1">🌊</abbr></button></td>
+            <td><button id="G2" onclick="playGame('G2')"><abbr title="G2">🌊</abbr></button></td>
+            <td><button id="G3" onclick="playGame('G3')"><abbr title="G3">🌊</abbr></button></td>
+            <td><button id="G4" onclick="playGame('G4')"><abbr title="G4">🌊</abbr></button></td>
+            <td><button id="G5" onclick="playGame('G5')"><abbr title="G5">🌊</abbr></button></td>
+            <td><button id="G6" onclick="playGame('G6')"><abbr title="G6">🌊</abbr></button></td>
+            <td><button id="G7" onclick="playGame('G7')"><abbr title="G7">🌊</abbr></button></td>
+            <td><button id="G8" onclick="playGame('G8')"><abbr title="G8">🌊</abbr></button></td>
+            <td><button id="G9" onclick="playGame('G9')"><abbr title="G9">🌊</abbr></button></td>
+            <td><button id="G10" onclick="playGame('G10')"><abbr title="G10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>H</th>
+            <td><button id="H1" onclick="playGame('H1')"><abbr title="H1">🌊</abbr></button></td>
+            <td><button id="H2" onclick="playGame('H2')"><abbr title="H2">🌊</abbr></button></td>
+            <td><button id="H3" onclick="playGame('H3')"><abbr title="H3">🌊</abbr></button></td>
+            <td><button id="H4" onclick="playGame('H4')"><abbr title="H4">🌊</abbr></button></td>
+            <td><button id="H5" onclick="playGame('H5')"><abbr title="H5">🌊</abbr></button></td>
+            <td><button id="H6" onclick="playGame('H6')"><abbr title="H6">🌊</abbr></button></td>
+            <td><button id="H7" onclick="playGame('H7')"><abbr title="H7">🌊</abbr></button></td>
+            <td><button id="H8" onclick="playGame('H8')"><abbr title="H8">🌊</abbr></button></td>
+            <td><button id="H9" onclick="playGame('H9')"><abbr title="H9">🌊</abbr></button></td>
+            <td><button id="H10" onclick="playGame('H10')"><abbr title="H10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>I</th>
+            <td><button id="I1" onclick="playGame('I1')"><abbr title="I1">🌊</abbr></button></td>
+            <td><button id="I2" onclick="playGame('I2')"><abbr title="I2">🌊</abbr></button></td>
+            <td><button id="I3" onclick="playGame('I3')"><abbr title="I3">🌊</abbr></button></td>
+            <td><button id="I4" onclick="playGame('I4')"><abbr title="I4">🌊</abbr></button></td>
+            <td><button id="I5" onclick="playGame('I5')"><abbr title="I5">🌊</abbr></button></td>
+            <td><button id="I6" onclick="playGame('I6')"><abbr title="I6">🌊</abbr></button></td>
+            <td><button id="I7" onclick="playGame('I7')"><abbr title="I7">🌊</abbr></button></td>
+            <td><button id="I8" onclick="playGame('I8')"><abbr title="I8">🌊</abbr></button></td>
+            <td><button id="I9" onclick="playGame('I9')"><abbr title="I9">🌊</abbr></button></td>
+            <td><button id="I10" onclick="playGame('I10')"><abbr title="I10">🌊</abbr></button></td>
+        </tr>
+        <tr>
+            <th>J</th>
+            <td><button id="J1" onclick="playGame('J1')"><abbr title="J1">🌊</abbr></button></td>
+            <td><button id="J2" onclick="playGame('J2')"><abbr title="J2">🌊</abbr></button></td>
+            <td><button id="J3" onclick="playGame('J3')"><abbr title="J3">🌊</abbr></button></td>
+            <td><button id="J4" onclick="playGame('J4')"><abbr title="J4">🌊</abbr></button></td>
+            <td><button id="J5" onclick="playGame('J5')"><abbr title="J5">🌊</abbr></button></td>
+            <td><button id="J6" onclick="playGame('J6')"><abbr title="J6">🌊</abbr></button></td>
+            <td><button id="J7" onclick="playGame('J7')"><abbr title="J7">🌊</abbr></button></td>
+            <td><button id="J8" onclick="playGame('J8')"><abbr title="J8">🌊</abbr></button></td>
+            <td><button id="J9" onclick="playGame('J9')"><abbr title="J9">🌊</abbr></button></td>
+            <td><button id="J10" onclick="playGame('J10')"><abbr title="J10">🌊</abbr></button></td>
+        </tr>
+    </table>
+    <p class="centeredText" id="commentary"></p>
+    <footer>
+        <a href="index.html">Back to Main</a>
+    </footer>
+</body>
+
+</html>

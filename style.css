@@ -1,0 +1,31 @@
+* {
+    background-color: #000000; 
+    color: #ffefd5; 
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: hidden;
+}
+
+
+h1 {
+    color: rgb(238, 238, 167);
+    font-size: 4rem;
+    position: relative;
+    left: 11%;
+    text-align: justify;
+    margin-bottom: 0;
+}
+ul {
+    font-size: 2rem;
+    position: relative;
+    left: 5%;
+    list-style-position: inside;
+}
+a {
+    color: #ffefd5;
+}
+a:hover {
+    color: greenyellow; color: #ffc0cb
+}
+a:focus {
+    color: pink;
+}

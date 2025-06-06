@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Abby Gardner">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guesser</title>
+    <link rel="stylesheet" href="numberGuesser.css" type="text/css">
+    <script src="numberGuesser.js" defer></script>
+</head>
+
+<body>
+    <h1>Guess the Number!</h1>
+    <div id="difficulty">
+        <button class="difficulty" onclick="generateNumber(10)">Easy</button>
+        <button class="difficulty" onclick="generateNumber(100)">Medium</button>
+        <button class="difficulty" onclick="generateNumber(1000)">Hard</button>
+    </div>
+    <p id="directions"></p>
+    <!--<button id="begin" onclick="generateNumber()">Generate Number</button>-->
+    <br><br><br><br>
+    <input id="guess" type="text" autofocus>
+    <br>
+    <button id="submit" onclick="compareNumbers()">🟢</button>
+    <p id="resultDisplay"></p>
+    <p id="numberOfGuesses"></p>
+
+    <footer>
+        <a href="index.html">Back to Main</a>
+    </footer>
+</body>
+
+
+</html>
