@@ -219,8 +219,7 @@ function pickShot(param) {
         var y = param[0];
     }
     y = searchIndex(y, rowValues);
-    return [y,x];
-    
+    return [y,x];   
 }
 
 // places the ships-- triggered when the user presses start
@@ -263,16 +262,8 @@ function placeShips() {
                 }
             }
         } while (!placed);
-        
     }
 }
-
-
-
-
-
-
-
 
 // changes all the game board to '-'
 function resetGameBoard() {
@@ -280,8 +271,7 @@ function resetGameBoard() {
         for (let j = 1; j < 11; ++j) {
             gameBoard[i][j] = "-";
         }
-    }
-    
+    }  
 }
 
 // shows the locations of the surviving boats
@@ -370,7 +360,6 @@ function resetGame() {
         FLEET[i].hitPoints = FLEET[i].size;
     }
 }
-
 
 /// Trouble shooting functions
 // prints board to console
