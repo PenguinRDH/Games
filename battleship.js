@@ -171,7 +171,6 @@ function evaluateShot(param) {
         shotCommentary.textContent = 'Hit!';
         updateShipHitpoints(symbol);
     }
-    updateBoardDisplay();
 }
 
 // checks to make sure there is space to place the ship
@@ -331,11 +330,10 @@ function updateBoardDisplay() {
                 gameBoardDisplay[i][j].textContent = '🔥';
             }
             else if (gameBoard[i][j] == "m") {
-                gameBoardDisplay[i][j] = '🗙';
-        
+                gameBoardDisplay[i][j].textContent = '🗙';
             }
             else {
-                gameBoardDisplay[i][j] = '🌊';
+                gameBoardDisplay[i][j].textContent = '🌊';
             }
         }
     }
@@ -358,8 +356,6 @@ function playGame(cell) {
     evaluateShot(pickShot(cell));
     updateBoardDisplay();
     evaluateForWinner();
-    //printBoardToConsole();
-    revealShips();
 }
 
 // reset game
@@ -373,7 +369,6 @@ function resetGame() {
     for (let i = 0; i < 5; ++i) {
         FLEET[i].hitPoints = FLEET[i].size;
     }
-    //printBoardToConsole();
 }
 
 
