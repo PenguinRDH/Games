@@ -1,4 +1,4 @@
-const gameBoardDisplay = [["","","","","","","","","",""],
+const gameBoardDisplayComp = [["","","","","","","","","",""],
                     [   "",
                         document.getElementById("A1"),
                         document.getElementById("A2"),
@@ -110,7 +110,18 @@ const gameBoardDisplay = [["","","","","","","","","",""],
                         document.getElementById("J9"),
                         document.getElementById("J10")]];
 const shotCommentary = document.getElementById("commentary");
-var gameBoard = [[0,1,2,3,4,5,6,7,8,9,10],
+var computersGameBoard = [[0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10],
+                [0,1,2,3,4,5,6,7,8,9,10]];
+var playersGameBoard = [[0,1,2,3,4,5,6,7,8,9,10],
                 [0,1,2,3,4,5,6,7,8,9,10],
                 [0,1,2,3,4,5,6,7,8,9,10],
                 [0,1,2,3,4,5,6,7,8,9,10],
@@ -155,34 +166,34 @@ function evaluateShot(param) {
     var x = param[1];
     var y = param[0];
     var symbol;
-    if (gameBoard[y][x] == "-") {
-        gameBoard[y][x] = "m";
+    if (computersGameBoard[y][x] == "-") {
+        computersGameBoard[y][x] = "m";
         shotCommentary.textContent = 'You missed!';
     }
-    else if (typeof(gameBoard[y][x]) == typeof(5)) {
+    else if (typeof(computersGameBoard[y][x]) == typeof(5)) {
         shotCommentary.textContent = 'Please press start';
     }
-    else if (gameBoard[y][x] == "m") {
+    else if (computersGameBoard[y][x] == "m") {
         shotCommentary.textContent = 'Well that was a waste of ammo...';
     }
-    else if (gameBoard[y][x] == "h") {
+    else if (computersGameBoard[y][x] == "h") {
         shotCommentary.textContent = 'Kick \'em when they\'re down';
     }
     else {
-        symbol = gameBoard[y][x];
-        gameBoard[y][x] = "h"
+        symbol = computersGameBoard[y][x];
+        computersGameBoard[y][x] = "h"
         shotCommentary.textContent = 'Hit!';
         updateShipHitpoints(symbol);
     }
 }
 
 // checks to make sure there is space to place the ship
-function isBoardLocationClear(direction, row, column, size) {
+function isBoardLocationClear(direction, row, column, size, board) {
     var count = 0;
     var returnValue = new Number;
     if (direction == 0) {
         for (let i = 0; i < size; ++i) {
-            if (gameBoard[row][column + i] != '-') {
+            if (board[row][column + i] != '-') {
                 count = 0;
                 break;
             }
@@ -193,7 +204,7 @@ function isBoardLocationClear(direction, row, column, size) {
     }
     else {
         for (let i = 0; i < size; ++i) {
-            if (gameBoard[row + i][column] != '-') {
+            if (board[row + i][column] != '-') {
                 count = 0;
                 break;
             }
@@ -226,7 +237,7 @@ function pickShot(param) {
 }
 
 // places the ships-- triggered when the user presses start
-function placeShips() {
+function placeShips(board) {
     var size = new Number;
     var symbol = new String;
     var direction = new Number;
@@ -244,10 +255,10 @@ function placeShips() {
                 row = Math.round(Math.random() *10);
                 column = Math.round(Math.random() *10000) % (10 - size)+1;
     
-                if (isBoardLocationClear(direction, row, column, size))
+                if (isBoardLocationClear(direction, row, column, size, board))
                 {
                     for (i = 0; i < size; ++i) {
-                        gameBoard[row][column + i] = symbol;
+                        board[row][column + i] = symbol;
                     }
                     placed = 1;
                 }
@@ -256,10 +267,10 @@ function placeShips() {
                 row = Math.round(Math.random() *10000) % (10 - size)+1;
                 column = Math.round(Math.random() *10);
                 
-                if (isBoardLocationClear(direction, row, column, size))
+                if (isBoardLocationClear(direction, row, column, size, board))
                 {
                     for (i = 0; i < size; ++i) {
-                        gameBoard[row+i][column] = symbol;
+                        board[row+i][column] = symbol;
                     }
                     placed = 1;
                 }
@@ -269,29 +280,29 @@ function placeShips() {
 }
 
 // changes all the game board to '-'
-function resetGameBoard() {
+function resetGameBoard(board) {
     for (let i = 1; i < 11; ++i) {
         for (let j = 1; j < 11; ++j) {
-            gameBoard[i][j] = "-";
+            board[i][j] = "-";
         }
     }  
 }
 
 // shows the locations of the surviving boats
-function revealShips() {
+function revealShips(board, display) {
     for (let i = 1; i < 11; ++i) {
         for (let j = 1; j < 11; ++j) {
-            if (gameBoard[i][j] == "-") {
-                gameBoardDisplay[i][j].textContent = '🌊';
+            if (board[i][j] == "-") {
+                display[i][j].textContent = '🌊';
             }
-            else if (gameBoard[i][j] == "h") {
-                gameBoardDisplay[i][j].textContent = '💥';
+            else if (board[i][j] == "h") {
+                display[i][j].textContent = '💥';
             }
-            else if (gameBoard[i][j] == "m") {
-                gameBoardDisplay[i][j] == '🗙';
+            else if (board[i][j] == "m") {
+                display[i][j] == '🗙';
             }
             else { // this needs to be here, otherwise in game # 2+, the old boats don't go away 
-                gameBoardDisplay[i][j].textContent = '🛥️';
+                display[i][j].textContent = '🛥️';
             }
         }
     }
@@ -315,18 +326,18 @@ function searchIndex(searchTerm, array)  {
     }
 }
 // updates display of board
-function updateBoardDisplay() {
+function updateBoardDisplay(board, display) {
    
     for (let i = 1; i < 11; ++i) {
         for (let j = 1; j < 11; ++j) {
-            if (gameBoard[i][j] == "h") {
-                gameBoardDisplay[i][j].textContent = '🔥';
+            if (board[i][j] == "h") {
+                display[i][j].textContent = '🔥';
             }
-            else if (gameBoard[i][j] == "m") {
-                gameBoardDisplay[i][j].textContent = '🗙';
+            else if (board[i][j] == "m") {
+                display[i][j].textContent = '🗙';
             }
             else {
-                gameBoardDisplay[i][j].textContent = '🌊';
+                display[i][j].textContent = '🌊';
             }
         }
     }
@@ -347,15 +358,16 @@ function updateShipHitpoints(symbol) {
 //consolidation of functions when playing-- requires game to be started
 function playGame(cell) {
     evaluateShot(pickShot(cell));
-    updateBoardDisplay();
+    updateBoardDisplay(computersGameBoard, gameBoardDisplay);
     evaluateForWinner();
 }
 
 // reset game
 function resetGame() {
-    resetGameBoard();
+    resetGameBoard(computersGameBoard);
     updateBoardDisplay();
-    placeShips();
+    placeShips(computersGameBoard);
+    placeShips(playersGameBoard);
     shotCommentary.textContent = '';
     playerHitPoints = 10;
     sinkCounter = 0;
@@ -366,10 +378,10 @@ function resetGame() {
 
 /// Trouble shooting functions
 // prints board to console
-function printBoardToConsole() {
+function printBoardToConsole(board) {
     for (let i = 1; i < 11; ++i) {
         for (let j = 1; j < 11; ++j) {
-            console.log(gameBoard[i][j]);
+            console.log(board[i][j]);
         }
     }
 }
