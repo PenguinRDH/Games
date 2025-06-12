@@ -326,18 +326,37 @@ function searchIndex(searchTerm, array)  {
     }
 }
 // updates display of board
-function updateBoardDisplay(board, display) {
-   
-    for (let i = 1; i < 11; ++i) {
-        for (let j = 1; j < 11; ++j) {
-            if (board[i][j] == "h") {
-                display[i][j].textContent = '🔥';
+function updateBoardDisplay(board, display, player) {
+   if (player) {
+        for (let i = 1; i < 11; ++i) {
+            for (let j = 1; j < 11; ++j) {
+                if (board[i][j] == "h") {
+                    display[i][j].textContent = '🔥';
+                }
+                else if (board[i][j] == "m") {
+                    display[i][j].textContent = '🗙';
+                }
+                else if (board[i][j] == "-") {
+                    display[i][j].textContent = '🌊';
+                }
+                else {
+                    display[i][j].textContent = '🛥️';
+                }
             }
-            else if (board[i][j] == "m") {
-                display[i][j].textContent = '🗙';
-            }
-            else {
-                display[i][j].textContent = '🌊';
+        }
+    }
+    else {
+        for (let i = 1; i < 11; ++i) {
+            for (let j = 1; j < 11; ++j) {
+                if (board[i][j] == "h") {
+                    display[i][j].textContent = '🔥';
+                }
+                else if (board[i][j] == "m") {
+                    display[i][j].textContent = '🗙';
+                }
+                else {
+                    display[i][j].textContent = '🌊';
+                }
             }
         }
     }
@@ -358,14 +377,14 @@ function updateShipHitpoints(symbol) {
 //consolidation of functions when playing-- requires game to be started
 function playGame(cell) {
     evaluateShot(pickShot(cell));
-    updateBoardDisplay(computersGameBoard, gameBoardDisplay);
+    updateBoardDisplay(computersGameBoard, gameBoardDisplayComp, false);
     evaluateForWinner();
 }
 
 // reset game
 function resetGame() {
     resetGameBoard(computersGameBoard);
-    updateBoardDisplay();
+    updateBoardDisplay(computersGameBoard, gameBoardDisplayComp, false);
     placeShips(computersGameBoard);
     placeShips(playersGameBoard);
     shotCommentary.textContent = '';
