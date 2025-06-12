@@ -159,6 +159,9 @@ function evaluateShot(param) {
         gameBoard[y][x] = "m";
         shotCommentary.textContent = 'You missed!';
     }
+    else if (typeof(gameBoard[y][x]) == typeof(5)) {
+        shotCommentary.textContent = 'Please press start';
+    }
     else if (gameBoard[y][x] == "m") {
         shotCommentary.textContent = 'Well that was a waste of ammo...';
     }
